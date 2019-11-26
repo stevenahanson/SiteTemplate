@@ -10,11 +10,12 @@ class NavBar extends Component {
             <li className="navButton"><Link to="">Home</Link></li>
           </ul>
         </header>
+        <div>
         <style jsx>
           {`
             header {
-              display: block;
-              background-color: black;
+              display: grey;
+              background-color: grey;
               width: 100%;
               height: 50px;
               color: white;
@@ -26,9 +27,13 @@ class NavBar extends Component {
             }
             .navButton {
               float: right;
+              &:hover {
+                background-color: black;
+              }
             }
           `}
         </style>
+        </div>
       </>
     )
 }
