@@ -15,13 +15,17 @@ class App extends Component {
     });
   }
 
+  backdropClickHandler = () => {
+    this.setState({sidebarOpen: false});
+  };
+
   render() {
     let sidebar;
     let backdrop;
 
     if(this.state.sidebarOpen) {
       sidebar = <Sidebar/>
-      backdrop = <Backdrop/>
+      backdrop = <Backdrop click={this.backdropClickHandler}/>
     }
 
     return (
