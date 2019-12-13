@@ -1,20 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Backdrop from './components/Backdrop/Backdrop';
 import Sidebar from './components/Sidebar/Sidebar';
 import Toolbar from './components/Toolbar/Toolbar';
 
-function App() {
-  return (
-    <div style={{height: '100%'}}>
-      <Toolbar/>
-      <Sidebar/>
-      <Backdrop/>
-      <main style={{marginTop: '64px'}}>
-        <p>This is the page content!</p>
-      </main>
-    </div>
-  );
+class App extends Component {
+  state = {
+    sidebarOpen: false
+  };
+
+  sidebarToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return {sidebarOpen: !prevState.sidebarOpen};
+    });
+  }
+
+  render() {
+    let sidebar;
+    let backdrop;
+
+    if(this.state.sidebarOpen) {
+      sidebar = <Sidebar/>
+      backdrop = <Backdrop/>
+    }
+
+    return (
+      <div style={{height: '100%'}}>
+        <Toolbar sidebarClickHandler={this.sidebarToggleClickHandler}/>
+        {sidebar}
+        {backdrop}
+        <main style={{marginTop: '64px'}}>
+          <p>This is the page content!</p>
+        </main>
+      </div>
+    );
+  }
 }
 
 export default App;
